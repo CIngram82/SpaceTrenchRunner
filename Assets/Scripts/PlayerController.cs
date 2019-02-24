@@ -9,9 +9,11 @@ public class PlayerController : MonoBehaviour {
     private float horizontalMove;
     private float verticalMove;
     public ParticleSystem wallhit;
+    private healthController hpControl;
 	// Use this for initialization
 	void Start () {
         playerRB = GetComponent<Rigidbody>();
+        hpControl = GetComponent<healthController>();
 	}
 	
 	// Update is called once per frame
@@ -36,6 +38,7 @@ public class PlayerController : MonoBehaviour {
             Vector3 collisionPoint = collision.contacts[0].point;
             Vector3 dir = collisionPoint - transform.position;
             dir = -dir.normalized;
+            hpControl.TakeDamage(5.0f);
             playerRB.AddForce(dir * (speed * 5));
             Instantiate(wallhit, collisionPoint, Quaternion.Euler(dir),collision.gameObject.transform);
         }else if (collision.gameObject.CompareTag("Obstacle"))
@@ -43,6 +46,7 @@ public class PlayerController : MonoBehaviour {
             Vector3 collisionPoint = collision.contacts[0].point;
             Vector3 dir = collisionPoint - transform.position;
             dir = -dir.normalized;
+            hpControl.TakeDamage(2.5f);
             playerRB.AddForce(dir * (speed * 10));
             Instantiate(wallhit, collisionPoint, Quaternion.Euler(dir), collision.gameObject.transform);
             Instantiate(wallhit, collisionPoint, Quaternion.Euler(dir), collision.gameObject.transform);

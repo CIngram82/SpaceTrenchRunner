@@ -7,24 +7,36 @@ public class SpawnObstacle : MonoBehaviour {
     private Vector3 endPoint;
     private Transform wall1;
     private Transform wall2;
+    private Transform ground;
+    private Transform roof;
     public GameObject CubeObstacle;
     // Use this for initialization
     void Start () {
 
         wall1 = gameObject.transform.Find("Wall1").transform;
-        startPoint = GetVector3ForWall(wall1);
+        startPoint = GetVector3ForTransform(wall1);
 
         wall2 = gameObject.transform.Find("Wall2").transform;
-        endPoint = GetVector3ForWall(wall2);
+        endPoint = GetVector3ForTransform(wall2);
+
+        SpawnCube();
+
+        ground = gameObject.transform.Find("Ground").transform;
+        startPoint = GetVector3ForTransform(ground);
+
+        roof = gameObject.transform.Find("Roof").transform;
+        endPoint = GetVector3ForTransform(roof);
 
         SpawnCube();
     }
-    Vector3 GetVector3ForWall(Transform wall)
+
+
+    Vector3 GetVector3ForTransform(Transform wall)
     {
         
         Vector3 wallPos = wall.position;
         Vector3 wallScale = wall.localScale;
-        float wallx = wallPos.x;
+        float wallx = Random.Range((float)(wallPos.x - (wallScale.x * .5)), (float)(wallPos.x + (wallScale.x * .5)));
         float wally = Random.Range((float)(wallPos.y - (wallScale.y * .5)), (float)(wallPos.y + (wallScale.y * .5)));
         float wallz = Random.Range((float)(wallPos.z - (wallScale.z * .5)), (float)(wallPos.z + (wallScale.z * .5)));
         return new Vector3(wallx, wally, wallz);
