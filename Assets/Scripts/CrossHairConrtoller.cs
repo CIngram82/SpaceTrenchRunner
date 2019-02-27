@@ -4,10 +4,11 @@ using UnityEngine;
 using UnityEngine.UI;
 
 public class CrossHairConrtoller : MonoBehaviour {
-
+    private Camera FPVcam;
     // Use this for initialization
     void Start ()
     {
+        FPVcam = FindObjectOfType<Camera>();
         Cursor.visible = false;
 	}
 	
@@ -33,7 +34,19 @@ public class CrossHairConrtoller : MonoBehaviour {
 
     void FireLaser()
     {
-        print("Pew! ");
+        print("Pew!");
+        Ray ray;
+        RaycastHit hit;
+        ray = FPVcam.ScreenPointToRay(Input.mousePosition);
+
+        if (Physics.Raycast(ray,out hit,1000.0f))
+        {
+
+            //if (hit.collider.gameObject.CompareTag("Obstacle"))
+            //{
+                Destroy(hit.collider.gameObject);
+            //}
+        }
 
     }
 

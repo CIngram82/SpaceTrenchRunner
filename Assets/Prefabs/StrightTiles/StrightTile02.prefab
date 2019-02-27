@@ -22,7 +22,7 @@ GameObject:
   - component: {fileID: 33436381324665958}
   - component: {fileID: 23427452385712232}
   - component: {fileID: 65384035295236830}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Wall1
   m_TagString: wall
   m_Icon: {fileID: 0}
@@ -40,7 +40,7 @@ GameObject:
   - component: {fileID: 33369972161038470}
   - component: {fileID: 23409606409008660}
   - component: {fileID: 65450381131339532}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Wall2
   m_TagString: wall
   m_Icon: {fileID: 0}
@@ -58,7 +58,7 @@ GameObject:
   - component: {fileID: 33586683487741712}
   - component: {fileID: 23415636294553160}
   - component: {fileID: 65809974783083550}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Ground
   m_TagString: wall
   m_Icon: {fileID: 0}
@@ -76,7 +76,7 @@ GameObject:
   - component: {fileID: 33018347257134700}
   - component: {fileID: 23710782825823022}
   - component: {fileID: 65534345788810186}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Roof
   m_TagString: wall
   m_Icon: {fileID: 0}
@@ -91,7 +91,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4453473275782886}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: EndPoint
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -109,7 +109,7 @@ GameObject:
   - component: {fileID: 65526508068314732}
   - component: {fileID: 114265059672690862}
   - component: {fileID: 114768319307222696}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: StrightTile02
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -451,3 +451,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   CubeObstacle: {fileID: 1633814219895284, guid: c48279f5e29bccb4387c751b2cbc2283,
     type: 2}
+  CubeList: []
