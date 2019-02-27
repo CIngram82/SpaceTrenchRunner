@@ -5,6 +5,9 @@ using UnityEngine.UI;
 
 public class CrossHairConrtoller : MonoBehaviour {
     private Camera FPVcam;
+    public GameObject plasmaBoltPreFab;
+    public Transform weaponPoint01;
+    public Transform weaponPoint02;
     // Use this for initialization
     void Start ()
     {
@@ -38,15 +41,7 @@ public class CrossHairConrtoller : MonoBehaviour {
         Ray ray;
         RaycastHit hit;
         ray = FPVcam.ScreenPointToRay(Input.mousePosition);
-
-        if (Physics.Raycast(ray,out hit,1000.0f))
-        {
-
-            //if (hit.collider.gameObject.CompareTag("Obstacle"))
-            //{
-                Destroy(hit.collider.gameObject);
-            //}
-        }
+       
 
     }
 

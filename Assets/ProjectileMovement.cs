@@ -2,15 +2,15 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class difficultController : MonoBehaviour {
-
+public class ProjectileMovement : MonoBehaviour {
+    public float speed;
 	// Use this for initialization
 	void Start () {
 		
 	}
 	
 	// Update is called once per frame
-	void Update () {
-		
+	void FixedUpdate () {
+        transform.Translate(transform.forward * speed * Time.deltaTime);
 	}
 }
