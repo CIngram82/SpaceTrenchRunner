@@ -46,13 +46,13 @@ public class SpawnObstacle : MonoBehaviour {
 
         
         float dist = Vector3.Distance(startPoint, endPoint);
-        Vector3 size = new Vector3(0.5f, 0.5f, 1.0f);
+        //Vector3 size = new Vector3(0.5f, 0.5f, 1.0f);
         for (int i = 0; i < dist; i++)
         {
             GameObject cubeOb1 = Instantiate(CubeObstacle, transform);
 
             cubeOb1.transform.position = startPoint;
-            cubeOb1.transform.localScale = size;
+            //cubeOb1.transform.localScale = size;
             cubeOb1.transform.LookAt(endPoint);
             cubeOb1.transform.Rotate(0, 0, 45);
             cubeOb1.transform.position = Vector3.MoveTowards(startPoint, endPoint, i);

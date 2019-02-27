@@ -41,6 +41,7 @@ public class CrossHairConrtoller : MonoBehaviour {
         Ray ray;
         RaycastHit hit;
         ray = FPVcam.ScreenPointToRay(Input.mousePosition);
+
        
 
     }
