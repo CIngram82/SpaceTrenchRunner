@@ -20,7 +20,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4105375538865686}
   - component: {fileID: 108780756150093904}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Spot Light
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -41,9 +41,25 @@ GameObject:
   - component: {fileID: 33013048984283600}
   - component: {fileID: 135243659262797550}
   - component: {fileID: 114324131796572852}
-  m_Layer: 0
+  - component: {fileID: 114712225862318470}
+  m_Layer: 2
   m_Name: 1stPersonView
   m_TagString: Player
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!1 &1539232970213086
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4355238957476382}
+  m_Layer: 2
+  m_Name: WeaponPoint02
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -57,7 +73,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4965167580278150}
   - component: {fileID: 108504833717560956}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Spot Light (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -74,8 +90,23 @@ GameObject:
   - component: {fileID: 4752220516346576}
   - component: {fileID: 20100754634357782}
   - component: {fileID: 81311172876764066}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Main Camera
+  m_TagString: MainCamera
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!1 &1996131877042464
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4697279818505126}
+  m_Layer: 2
+  m_Name: WeaponPoint01
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -94,6 +125,19 @@ Transform:
   m_Father: {fileID: 4417849752128706}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 90, y: 0, z: 0}
+--- !u!4 &4355238957476382
+Transform:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1539232970213086}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -0.125, y: -0.125, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 4417849752128706}
+  m_RootOrder: 4
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &4417849752128706
 Transform:
   m_ObjectHideFlags: 1
@@ -101,14 +145,29 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1474946785515682}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 1, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4752220516346576}
   - {fileID: 4105375538865686}
   - {fileID: 4965167580278150}
+  - {fileID: 4697279818505126}
+  - {fileID: 4355238957476382}
   m_Father: {fileID: 0}
   m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!4 &4697279818505126
+Transform:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1996131877042464}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0.125, y: -0.125, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 4417849752128706}
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &4752220516346576
 Transform:
@@ -325,6 +384,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2e4a25f450b56394aa0de6ba82ae4589, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  maxHealth: 100
+--- !u!114 &114712225862318470
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1474946785515682}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f19e1f0250f0ea440a677770674c1a80, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  projectilePrefab: {fileID: 1904370469316196, guid: b46c6ba83994e0a4490d698bd3feed86,
+    type: 2}
+  firePoint01: {fileID: 4697279818505126}
+  firePoint02: {fileID: 4355238957476382}
 --- !u!114 &114814893865330780
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -336,7 +411,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3fab374238e1466419b22b9e4deb0fb2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  fowardSpeed: 25
+  fowardSpeed: 10
   speed: 200
   wallhit: {fileID: 198765466015775244, guid: 66edc2e649c201d49b41e699ba4c6394, type: 2}
 --- !u!135 &135243659262797550

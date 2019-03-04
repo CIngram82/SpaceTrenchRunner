@@ -259,34 +259,6 @@ CanvasRenderer:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 386009088}
   m_CullTransparentMesh: 0
---- !u!1 &488273669
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 488273670}
-  m_Layer: 0
-  m_Name: WeaponPoint02
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &488273670
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 488273669}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.5, y: -0.25, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 1505568006}
-  m_RootOrder: 4
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &704667973
 GameObject:
   m_ObjectHideFlags: 0
@@ -514,11 +486,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!4 &864602844 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 4105375538865686, guid: 62ac4c7c08448e94294354e3c1d55d04,
-    type: 2}
-  m_PrefabInternal: {fileID: 1765753503}
 --- !u!1 &1024855620
 GameObject:
   m_ObjectHideFlags: 0
@@ -566,10 +533,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e66c88d665632d24ea85396b8e393cf1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  plasmaBoltPreFab: {fileID: 1904370469316196, guid: b46c6ba83994e0a4490d698bd3feed86,
-    type: 2}
-  weaponPoint01: {fileID: 864602844}
-  weaponPoint02: {fileID: 1748636494}
 --- !u!114 &1024855623
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -679,46 +642,6 @@ CanvasRenderer:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1031692997}
   m_CullTransparentMesh: 0
---- !u!1 &1230165871
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1230165872}
-  - component: {fileID: 1230165873}
-  m_Layer: 0
-  m_Name: WeaponPoint01
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &1230165872
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1230165871}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.5, y: -0.25, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 1505568006}
-  m_RootOrder: 3
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1230165873
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1230165871}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f19e1f0250f0ea440a677770674c1a80, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &1351282481
 GameObject:
   m_ObjectHideFlags: 0
@@ -991,11 +914,6 @@ CanvasRenderer:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1475739005}
   m_CullTransparentMesh: 0
---- !u!4 &1505568006 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 4417849752128706, guid: 62ac4c7c08448e94294354e3c1d55d04,
-    type: 2}
-  m_PrefabInternal: {fileID: 1765753503}
 --- !u!1 &1560492026
 GameObject:
   m_ObjectHideFlags: 0
@@ -1184,11 +1102,6 @@ CanvasRenderer:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1666718371}
   m_CullTransparentMesh: 0
---- !u!4 &1748636494 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 4965167580278150, guid: 62ac4c7c08448e94294354e3c1d55d04,
-    type: 2}
-  m_PrefabInternal: {fileID: 1765753503}
 --- !u!1001 &1765753503
 Prefab:
   m_ObjectHideFlags: 0
