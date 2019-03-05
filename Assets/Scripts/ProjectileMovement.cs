@@ -17,15 +17,13 @@ public class ProjectileMovement : MonoBehaviour {
 	void FixedUpdate () {
         rb.velocity = transform.forward * speed;
 	}
-    private void OnTriggerEnter(Collider other)
+    void OnCollisionEnter(Collision collision)
     {
-        
-   
-        if (other.gameObject.CompareTag("wall"))
+        if (collision.gameObject.CompareTag("wall"))
         {
             Destroy(gameObject);
         }
-
     }
+   
 
 }

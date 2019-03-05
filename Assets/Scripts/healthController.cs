@@ -12,11 +12,6 @@ public class healthController : MonoBehaviour {
         uiControl = GameObject.Find("UIController").GetComponent<UIController>();
         health = maxHealth;
 	}
-	
-	// Update is called once per frame
-	void Update () {
-		
-	}
 
     public void TakeDamage(float damage)
     {

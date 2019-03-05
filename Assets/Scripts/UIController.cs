@@ -7,6 +7,8 @@ public class UIController : MonoBehaviour {
 
     public Image healthGreenImage;
     public Image healthRedImage;
+    public Image ammoGreenImage;
+    public Image ammoRedImage;
     public Text distanceNumText;
 
     private GameObject player;
@@ -31,6 +33,18 @@ public class UIController : MonoBehaviour {
         Vector2 min = healthRedImage.rectTransform.anchorMin;
         min.x = newX;
         healthRedImage.rectTransform.anchorMin = min;
+    }
+    public void UpdateAmmoDisplay(float ammo)
+    {
+        float newX = (ammo) * 0.01f;
+
+        Vector2 max = ammoGreenImage.rectTransform.anchorMax;
+        max.x = newX;
+        ammoGreenImage.rectTransform.anchorMax = max;
+
+        Vector2 min = ammoRedImage.rectTransform.anchorMin;
+        min.x = newX;
+        ammoRedImage.rectTransform.anchorMin = min;
     }
     public void UpdateDistanceDisplay()
     {

@@ -108,6 +108,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 26a6c758facce0f4cbc2ce613ab87b40, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  breakUpPrefab: {fileID: 1925558339173712, guid: 77b4a036093ea5e4e942a6c5562bb74b,
+  breakUpPrefab: {fileID: 1156370247685470, guid: 77b4a036093ea5e4e942a6c5562bb74b,
     type: 2}
-  breakUPfxs: {fileID: 0}
