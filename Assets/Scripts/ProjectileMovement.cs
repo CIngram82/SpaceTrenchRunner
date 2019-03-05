@@ -10,8 +10,8 @@ public class ProjectileMovement : MonoBehaviour {
 	void Start () {
         rb = GetComponent<Rigidbody>();
         Destroy(gameObject, 1.5f);
-        
-	}
+        rb.velocity = transform.forward * speed;
+    }
 	
 	// Update is called once per frame
 	void FixedUpdate () {

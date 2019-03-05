@@ -9,10 +9,11 @@ public class WeaponSystem : MonoBehaviour {
 
 
     private int firePointNumber = 1;
-    private float maxAmmo = 100;
-    private float currentAmmo ;
-    private float rechargeRate = 5; // Per second 
-    private float attackCost = 10;
+    public float projectileSpeed = 50;
+    public float maxAmmo = 100;
+    public float currentAmmo;
+    public float rechargeRate = 5; // Per second 
+    public float attackCost = 10;
 
     private UIController uiControl;
 
@@ -27,14 +28,10 @@ public class WeaponSystem : MonoBehaviour {
     void Update () {
         currentAmmo = Mathf.Min(maxAmmo,currentAmmo+ (rechargeRate * Time.deltaTime));
         uiControl.UpdateAmmoDisplay(currentAmmo);
-        if (Input.GetMouseButtonDown(0) && (currentAmmo > attackCost))
-        {
-            
-                FireWeapon();
-        }	
+
 	}
 
-   void FireWeapon()
+   public void FireWeapon(float playerSpeed)
     {
         currentAmmo -= attackCost;
 
@@ -55,7 +52,12 @@ public class WeaponSystem : MonoBehaviour {
         Physics.Raycast(ray, out hitInfo);
 
         GameObject projectile = Instantiate(projectilePrefab, firePoint.position, firePoint.rotation);
-        projectile.transform.LookAt(hitInfo.point); 
+        projectile.transform.LookAt(hitInfo.point);
+        projectile.GetComponent<ProjectileMovement>().speed = playerSpeed + projectileSpeed; 
     }
+   public void WeaponBoost(float boostAmount)
+    {
+        currentAmmo += boostAmount;
 
+    }
 }
