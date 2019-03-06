@@ -14,6 +14,7 @@ public class WallBuilder : MonoBehaviour {
     // Use this for initialization
     void Start () {
         completeWall = new GameObject("compleateWall");
+        completeWall.transform.position = new Vector3(0,0,0);
         BuildRandomWall();
     }
 	void AddWallSection(List<GameObject> wallList)
@@ -29,9 +30,11 @@ public class WallBuilder : MonoBehaviour {
         while(wallSize > 0)
         {
             int randNum = Random.Range(0, 4);
+
             switch (randNum)
             {
                 case 0:
+                    
                     AddWallSection(walls25list);
                     zDistance += 2.5f;
                     wallSize -= 2.5f;
@@ -40,6 +43,7 @@ public class WallBuilder : MonoBehaviour {
                     if (wallSize >= 5.0)
                     {
                         AddWallSection(walls50list);
+
                         zDistance += 5.0f;
                         wallSize -= 5.0f;
                     }
@@ -48,13 +52,14 @@ public class WallBuilder : MonoBehaviour {
                     if (wallSize >= 7.5f)
                     {
                         AddWallSection(walls75list);
+
                         zDistance += 7.5f;
                         wallSize -= 7.5f;
                     }
                     break;
                 case 3:
                     if(wallSize >= 10.0f)
-                    { 
+                    {
                         AddWallSection(walls10list);
                         zDistance += 10.0f;
                         wallSize -= 10.0f;
