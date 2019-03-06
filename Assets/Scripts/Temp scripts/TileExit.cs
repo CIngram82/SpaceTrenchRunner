@@ -13,6 +13,9 @@ public class TileExit : MonoBehaviour {
 	void Update () {
 		
 	}
+    // after update to building walls this will be moved to a single exit
+    // that exit will just move ahead every time the player hits it.
+    // respawning a new section every time. 
     private void OnTriggerEnter(Collider other)
     {
         if (other.gameObject.CompareTag("Player"))

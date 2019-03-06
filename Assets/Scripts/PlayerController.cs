@@ -5,26 +5,46 @@ using UnityEngine;
 public class PlayerController : MonoBehaviour {
     public float fowardSpeed;
     public float speed;
+    public float minSpeed = 15.0f;
+
+    // boosting
     public float currentSpeed;
-    private float boostingSpeed = 0.0f;
+
     public bool isBoosting = false;
     public float boostingTime = 2.4f; //time in seconds
     public float boostTimeLeft;
+    //breaking
+    public bool isBreaking = false;
+    public float breakingTime = 1.0f; //time in seconds
+    public float breakingTimeLeft;
+    public float breakingCost = 50.0f;
+    public float breakingDamage = 5.0f;
+
+    // collision 
+    public float wallHitDamage = 5.0f;
+    public float obsHitDamage = 2.5f;
+
+
+    // health
+    public float maxHealth = 100;
+    private float health;
 
     private Rigidbody  playerRB;
     private float horizontalMove;
     private float verticalMove;
     public ParticleSystem wallhit;
-    private healthController hpControl;
     private WeaponSystem wSystem;
+    private UIController uiControl;
 
-	// Use this for initialization
-	void Start () {
+    // Use this for initialization
+    void Start () {
         playerRB = GetComponent<Rigidbody>();
-        hpControl = GetComponent<healthController>();
+        uiControl = GameObject.Find("UIController").GetComponent<UIController>();
         wSystem = GetComponent<WeaponSystem>();
         boostTimeLeft = boostingTime;
+        breakingTimeLeft = breakingTime;
         currentSpeed = fowardSpeed;
+        health = maxHealth;
 
     }
 	
@@ -36,17 +56,35 @@ public class PlayerController : MonoBehaviour {
         {
             wSystem.FireWeapon(currentSpeed);
         }
-        if (Input.GetButtonDown("Jump") && !isBoosting)
+        if (Input.GetButtonDown("Jump") && !isBoosting && !isBreaking)
         {
             isBoosting = true;
+            minSpeed += 1;
             boostTimeLeft = boostingTime;
-            wSystem.rechargeRate += 0.5f;
+        }
+        if (Input.GetButtonDown("Fire2")&& !isBreaking && !isBoosting)
+        {
+            isBreaking = true;
+            breakingTimeLeft = breakingTime;
+            
+            if(wSystem.currentAmmo < breakingCost)
+            {
+                TakeDamage((breakingDamage + breakingCost) - wSystem.currentAmmo);
+                wSystem.currentAmmo = 0.0f;
+            }
+            else
+            {
+                TakeDamage(breakingDamage);
+                wSystem.currentAmmo -= breakingCost;
+            }
         }
 	}
+
     private void FixedUpdate()
     {
         if (isBoosting) AddToBoost();
-        currentSpeed += boostingSpeed;
+        if (isBreaking) ApplyBreak();
+        if (currentSpeed < minSpeed) currentSpeed = minSpeed;
         playerRB.velocity = transform.forward * (currentSpeed);
 
         Vector3 movement = transform.forward;
@@ -62,7 +100,7 @@ public class PlayerController : MonoBehaviour {
             Vector3 collisionPoint = collision.contacts[0].point;
             Vector3 dir = collisionPoint - transform.position;
             dir = -dir.normalized;
-            hpControl.TakeDamage(5.0f);
+            TakeDamage(wallHitDamage);
             playerRB.AddForce(dir * (speed * 5));
             Instantiate(wallhit, collisionPoint, Quaternion.Euler(dir),collision.gameObject.transform);
         }else if (collision.gameObject.CompareTag("Obstacle"))
@@ -70,7 +108,7 @@ public class PlayerController : MonoBehaviour {
             Vector3 collisionPoint = collision.contacts[0].point;
             Vector3 dir = collisionPoint - transform.position;
             dir = -dir.normalized;
-            hpControl.TakeDamage(2.5f);
+            TakeDamage(obsHitDamage);
             playerRB.AddForce(dir * (speed * 10));
             Instantiate(wallhit, collisionPoint, Quaternion.Euler(dir), collision.gameObject.transform);
             Instantiate(wallhit, collisionPoint, Quaternion.Euler(dir), collision.gameObject.transform);
@@ -80,13 +118,33 @@ public class PlayerController : MonoBehaviour {
 
     private void AddToBoost()
     {
-        boostingSpeed = (boostTimeLeft * boostTimeLeft) * 0.02f;
+        float boostingSpeed = (boostTimeLeft * boostTimeLeft) * 0.02f;
+        currentSpeed += boostingSpeed;
         wSystem.WeaponBoost(boostingSpeed * 7.5f);
         boostTimeLeft -= 0.02f;
         if(boostTimeLeft< 0.0f)
         {
+            boostingSpeed = 0.0f;
             isBoosting = false;
         }
     }
+    private void ApplyBreak()
+    {
+        // speed drop
+        float breakingSpeed = (breakingTimeLeft * breakingTimeLeft) * 0.3f;
+        currentSpeed -= breakingSpeed;
+        breakingTimeLeft -= 0.02f;
+        if (breakingTimeLeft < 0.0f)
+        {
+            breakingSpeed = 0.0f;
+            isBreaking = false;
+        }
 
+    }
+
+    private void TakeDamage(float damage)
+    {
+        health -= damage;
+        uiControl.UpdateHealthDisplay(health);
+    }
 }
