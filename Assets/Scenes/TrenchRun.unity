@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.37311953, g: 0.38074014, b: 0.3587274, a: 1}
+  m_IndirectSpecularColor: {r: 0.37311926, g: 0.38073996, b: 0.35872698, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -1039,12 +1039,6 @@ MonoBehaviour:
   strightTileList:
   - {fileID: 1645115174174580, guid: 7a16a1eef88171f4591b7a952a8c50b5, type: 2}
   - {fileID: 1645115174174580, guid: 2593b95edb7b34249a1a288599932773, type: 2}
-  rightTileList:
-  - {fileID: 0}
-  - {fileID: 0}
-  leftTileList:
-  - {fileID: 0}
-  - {fileID: 0}
 --- !u!1 &1473228736
 GameObject:
   m_ObjectHideFlags: 0
@@ -1544,6 +1538,7 @@ MonoBehaviour:
   healthRedImage: {fileID: 2047088134}
   ammoGreenImage: {fileID: 40841782}
   ammoRedImage: {fileID: 1373775530}
+  crossHairImage: {fileID: 1024855623}
   distanceNumText: {fileID: 1031692999}
 --- !u!1 &2047088132
 GameObject:

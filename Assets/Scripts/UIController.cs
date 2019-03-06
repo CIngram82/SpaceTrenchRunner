@@ -9,18 +9,28 @@ public class UIController : MonoBehaviour {
     public Image healthRedImage;
     public Image ammoGreenImage;
     public Image ammoRedImage;
+    public Image crossHairImage;
     public Text distanceNumText;
 
     private GameObject player;
 	// Use this for initialization
 	void Start () {
         player = GameObject.FindGameObjectWithTag("Player");
-
+        Cursor.visible = false;
     }
 	
 	// Update is called once per frame
 	void Update () {
         UpdateDistanceDisplay();
+        UpdateCrossHairPos();
+    }
+    void UpdateCrossHairPos()
+    {
+        float mouseX = Input.mousePosition.x;
+        float mouseY = Input.mousePosition.y;
+
+        Vector2 newPos = new Vector2(mouseX, mouseY);
+        crossHairImage.transform.position = newPos;
     }
     public void UpdateHealthDisplay(float health)
     {
