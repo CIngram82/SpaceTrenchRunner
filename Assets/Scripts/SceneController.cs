@@ -8,6 +8,7 @@ public class SceneController : MonoBehaviour {
     [SerializeField] float timeToWait = 2.5f;
     // Use this for initialization
     void Start () {
+        DontDestroyOnLoad(gameObject);
          activeSceneBuildInt = SceneManager.GetActiveScene().buildIndex;
         if (activeSceneBuildInt == 0)
         {

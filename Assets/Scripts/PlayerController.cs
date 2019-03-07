@@ -35,12 +35,16 @@ public class PlayerController : MonoBehaviour {
     public ParticleSystem wallhit;
     private WeaponSystem wSystem;
     private UIController uiControl;
+    private SceneController scnControl;
 
     // Use this for initialization
     void Start () {
         playerRB = GetComponent<Rigidbody>();
-        uiControl = GameObject.Find("UIController").GetComponent<UIController>();
         wSystem = GetComponent<WeaponSystem>();
+
+        scnControl = FindObjectOfType<SceneController>();
+        uiControl = FindObjectOfType<UIController>();
+        
         boostTimeLeft = boostingTime;
         breakingTimeLeft = breakingTime;
         currentSpeed = fowardSpeed;
@@ -146,5 +150,19 @@ public class PlayerController : MonoBehaviour {
     {
         health -= damage;
         uiControl.UpdateHealthDisplay(health);
+        if (health <= 0.0f)
+        {
+            PlayerDeath();
+        }
+    }
+    private void PlayerDeath()
+    {
+        scnControl.LoadSceneByName("GameOver");
+        string name = "None";
+
+        float distance = transform.position.z;
+        float time = Time.timeSinceLevelLoad;
+        float score = distance * time;
+        HighScoreManager._instance.SaveCurrentScore(name,score,distance,time);
     }
 }
