@@ -6,7 +6,6 @@ public class TileController : MonoBehaviour {
     public  List<GameObject> strightTileList = new List<GameObject>();
     private List<GameObject> activeTileList  = new List<GameObject>();
     private Transform spawnPoint;
-     
 
     void Start () {
         spawnPoint = GetComponent<Transform>();

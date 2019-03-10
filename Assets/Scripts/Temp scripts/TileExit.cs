@@ -3,10 +3,12 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class TileExit : MonoBehaviour {
-    private TileController tc;
+    private AddWallSection[] allWalls;
+
+
     // Use this for initialization
     void Start () {
-       tc =  GameObject.Find("TileController").GetComponent<TileController>();
+       allWalls = FindObjectsOfType<AddWallSection>();
 	}
 	
 	// Update is called once per frame
@@ -20,8 +22,15 @@ public class TileExit : MonoBehaviour {
     {
         if (other.gameObject.CompareTag("Player"))
         {
-            tc.RemoveOldTile();
-            tc.SpawnNextTile();
+            transform.position = new Vector3(
+                transform.position.x,
+                transform.position.y,
+                transform.position.z + 2.5f);
+            foreach (var item in allWalls)
+            {
+                item.RemoveOldTile();
+                item.SpawnNextTile();
+            }
         }
     }
 }
