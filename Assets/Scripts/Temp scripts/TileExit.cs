@@ -4,17 +4,17 @@ using UnityEngine;
 
 public class TileExit : MonoBehaviour {
     private AddWallSection[] allWalls;
+    public GameObject obst;
+    public List<GameObject> obsticles = new List<GameObject>();
 
+    public float spawnCounter;
 
     // Use this for initialization
     void Start () {
        allWalls = FindObjectsOfType<AddWallSection>();
 	}
 	
-	// Update is called once per frame
-	void Update () {
-		
-	}
+
     // after update to building walls this will be moved to a single exit
     // that exit will just move ahead every time the player hits it.
     // respawning a new section every time. 
@@ -26,10 +26,26 @@ public class TileExit : MonoBehaviour {
                 transform.position.x,
                 transform.position.y,
                 transform.position.z + 2.5f);
-            foreach (var item in allWalls)
+            spawnCounter++;
+            if (spawnCounter % 5 == 0)
             {
-                item.RemoveOldTile();
-                item.SpawnNextTile();
+                float spawnpoint = 0.0f;
+                foreach (var item in allWalls)
+                {
+                    item.zDistance += 2.5f;
+                    spawnpoint = item.zDistance;
+                }
+                Vector3 pos = new Vector3(transform.position.x, transform.position.y, spawnpoint);
+                GameObject block = Instantiate(obst, pos, transform.rotation);
+                block.transform.Rotate(0, Random.Range(0, 2) * 180, Random.Range(0,4)*90,Space.Self);
+            }
+            else
+            {
+                foreach (var item in allWalls)
+                {
+                    item.RemoveOldTile();
+                    item.SpawnNextTile();
+                }
             }
         }
     }

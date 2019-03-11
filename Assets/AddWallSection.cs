@@ -6,7 +6,7 @@ public class AddWallSection : MonoBehaviour {
     public List<GameObject> walls = new List<GameObject>();
     private List<GameObject> activeTileList = new List<GameObject>();
 
-    private float zDistance = 0;
+    public float zDistance = 0;
     public float sectionSize = 50.0f;
     // Use this for initialization
     void Start () {
@@ -16,8 +16,7 @@ public class AddWallSection : MonoBehaviour {
     {
         AddWallSections(walls);
     }
-
-     void AddWallSections(List<GameObject> wallList)
+    void AddWallSections(List<GameObject> wallList)
     {
         zDistance += 2.5f;
         GameObject randomWallSection = wallList[Random.Range(0, wallList.Count)];
@@ -27,13 +26,11 @@ public class AddWallSection : MonoBehaviour {
         int randY = Random.Range(0, 4);
         randomTile.transform.Rotate(0, randY * 90, 0, Space.Self);
     }
-
     void BuildRandomWall(float size)
     {
         float wallSize = size;
         while (wallSize > 0)
         {
-
             AddWallSections(walls);
             wallSize -= 2.5f;
         }
