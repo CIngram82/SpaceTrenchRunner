@@ -51,4 +51,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f793c2c770a787c478415c4d50b2cd94, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  musicMan: {fileID: 0}
   timeToWait: 1.5

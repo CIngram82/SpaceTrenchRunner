@@ -37,8 +37,11 @@ public class PlayerController : MonoBehaviour {
     private UIController uiControl;
     private SceneController scnControl;
 
+    public AudioManager audioMan;
+
     // Use this for initialization
     void Start () {
+        audioMan = FindObjectOfType<AudioManager>();
         playerRB = GetComponent<Rigidbody>();
         wSystem = GetComponent<WeaponSystem>();
 
@@ -59,22 +62,31 @@ public class PlayerController : MonoBehaviour {
         if (Input.GetButtonDown("Fire1") && (wSystem.currentAmmo > wSystem.attackCost))
         {
             wSystem.FireWeapon(currentSpeed);
+            audioMan.PlayAttackSFX();
+        }
+        else if (Input.GetButtonDown("Fire1") && (wSystem.currentAmmo < wSystem.attackCost))
+        {
+            audioMan.PlaylowPowerAttackVO();
         }
         if (Input.GetButtonDown("Jump") && !isBoosting && !isBreaking)
         {
             isBoosting = true;
             minSpeed += 1;
             boostTimeLeft = boostingTime;
+            audioMan.hasBoosted = true;
+            audioMan.PlayboosingAttackVO();
         }
         if (Input.GetButtonDown("Fire2")&& !isBreaking && !isBoosting)
         {
             isBreaking = true;
+            audioMan.hasBreaked = true;
             breakingTimeLeft = breakingTime;
             
             if(wSystem.currentAmmo < breakingCost)
             {
                 TakeDamage((breakingDamage + breakingCost) - wSystem.currentAmmo);
                 wSystem.currentAmmo = 0.0f;
+                audioMan.PlaylowPowerBreakingDamageVO();
             }
             else
             {
@@ -107,12 +119,14 @@ public class PlayerController : MonoBehaviour {
             TakeDamage(wallHitDamage);
             playerRB.AddForce(dir * (speed * 5));
             Instantiate(wallhit, collisionPoint, Quaternion.Euler(dir),collision.gameObject.transform);
+            audioMan.PlaycollisionVO();
         }else if (collision.gameObject.CompareTag("Obstacle"))
         {
             Vector3 collisionPoint = collision.contacts[0].point;
             Vector3 dir = collisionPoint - transform.position;
             dir = -dir.normalized;
             TakeDamage(obsHitDamage);
+            audioMan.PlaycollisionVO();
             playerRB.AddForce(dir * (speed * 10));
             Instantiate(wallhit, collisionPoint, Quaternion.Euler(dir), collision.gameObject.transform);
             Instantiate(wallhit, collisionPoint, Quaternion.Euler(dir), collision.gameObject.transform);

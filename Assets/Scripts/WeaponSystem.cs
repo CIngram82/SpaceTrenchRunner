@@ -52,7 +52,7 @@ public class WeaponSystem : MonoBehaviour {
         Physics.Raycast(ray, out hitInfo);
 
         GameObject projectile = Instantiate(projectilePrefab, firePoint.position, firePoint.rotation);
-        projectile.transform.LookAt(hitInfo.point);
+        
         projectile.GetComponent<ProjectileMovement>().speed = playerSpeed + projectileSpeed; 
     }
    public void WeaponBoost(float boostAmount)

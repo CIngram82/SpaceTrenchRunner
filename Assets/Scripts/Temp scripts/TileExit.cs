@@ -5,7 +5,8 @@ using UnityEngine;
 public class TileExit : MonoBehaviour {
     private AddWallSection[] allWalls;
     public GameObject obst;
-    public List<GameObject> obsticles = new List<GameObject>();
+    public List<GameObject> obsticlesList = new List<GameObject>();
+    public int spawnRate = 10;
 
     public float spawnCounter;
 
@@ -27,7 +28,7 @@ public class TileExit : MonoBehaviour {
                 transform.position.y,
                 transform.position.z + 2.5f);
             spawnCounter++;
-            if (spawnCounter % 5 == 0)
+            if (spawnCounter % spawnRate == 0)
             {
                 float spawnpoint = 0.0f;
                 foreach (var item in allWalls)
@@ -37,7 +38,14 @@ public class TileExit : MonoBehaviour {
                 }
                 Vector3 pos = new Vector3(transform.position.x, transform.position.y, spawnpoint);
                 GameObject block = Instantiate(obst, pos, transform.rotation);
+                GameObject randomWallSection = obsticlesList[Random.Range(0, obsticlesList.Count)];
+                Instantiate(randomWallSection, pos, transform.rotation, block.transform);
                 block.transform.Rotate(0, Random.Range(0, 2) * 180, Random.Range(0,4)*90,Space.Self);
+                
+                if (spawnCounter % 50 == 0 && spawnRate > 1)
+                {
+                    spawnRate--;
+                }
             }
             else
             {

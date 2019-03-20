@@ -5,11 +5,14 @@ using UnityEngine.SceneManagement;
 
 public class SceneController : MonoBehaviour {
     int activeSceneBuildInt;
+    private MusicManager musicMan;
     [SerializeField] float timeToWait = 2.5f;
     // Use this for initialization
     void Start () {
         DontDestroyOnLoad(gameObject);
-         activeSceneBuildInt = SceneManager.GetActiveScene().buildIndex;
+        
+        activeSceneBuildInt = SceneManager.GetActiveScene().buildIndex;
+
         if (activeSceneBuildInt == 0)
         {
             StartCoroutine(WaitForTime());
@@ -21,10 +24,6 @@ public class SceneController : MonoBehaviour {
         yield return new WaitForSeconds(timeToWait);
         LoadNextScene();
     }
-
-	
-
-
     public void ReloadScene()
     {
         int activeSceneBuildInt = SceneManager.GetActiveScene().buildIndex;
@@ -35,9 +34,13 @@ public class SceneController : MonoBehaviour {
         int activeSceneBuildInt = SceneManager.GetActiveScene().buildIndex;
         SceneManager.LoadScene(activeSceneBuildInt + 1);
     }
-
     public void LoadSceneByName(string name)
     {
+        if(name == "TrenchRun")
+        {
+            musicMan = FindObjectOfType<MusicManager>();
+            musicMan.PlayGameBGM();
+        }
         SceneManager.LoadScene(name);
     }
 
