@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class PlayerController : MonoBehaviour {
+    [Header(" Movement system")]
     public float fowardSpeed;
     public float speed;
     public float minSpeed = 15.0f;
@@ -17,11 +18,13 @@ public class PlayerController : MonoBehaviour {
     //breaking
     [HideInInspector]   public bool isBreaking = false;
     [HideInInspector]   public float breakingTimeLeft;
+    [Header(" Breaking system")]
     public float breakingTime = 1.0f; //time in seconds
     public float breakingCost = 50.0f;
     public float breakingDamage = 5.0f;
 
     // collision 
+    [Header(" Collision system")]
     public float wallHitDamage = 5.0f;
     public float obsHitDamage = 2.5f;
 
@@ -53,6 +56,7 @@ public class PlayerController : MonoBehaviour {
         currentSpeed = fowardSpeed;
         health = maxHealth;
 
+        Cursor.lockState = CursorLockMode.Locked;
     }
 	
 	// Update is called once per frame
@@ -173,6 +177,7 @@ public class PlayerController : MonoBehaviour {
     }
     private void PlayerDeath()
     {
+        Cursor.lockState = CursorLockMode.None;
         scnControl.LoadSceneByName("GameOver");
         string name = "None";
 

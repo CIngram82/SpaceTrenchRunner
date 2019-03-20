@@ -53,7 +53,6 @@ public class AudioManager : MonoBehaviour {
     public void PlaylowPowerBreakingDamageVO()
     {
         audioSource.PlayOneShot(lowPowerBreakingDamageVO);
-        
     }
     public void PlaycollisionVO()
     {
