@@ -105,10 +105,10 @@ public class PlayerController : MonoBehaviour {
 
 
 
-        Vector3 movement = transform.forward;
-        movement.x = horizontalMove * speed;
-        movement.y = verticalMove * speed;
-        playerRB.AddForce( movement);
+        Vector3 rot = transform.rotation.eulerAngles;
+        rot.x = -verticalMove  * speed;
+        rot.y = horizontalMove * speed;
+        playerRB.rotation = Quaternion.Euler(rot);
     }
 
     private void OnCollisionEnter(Collision collision)

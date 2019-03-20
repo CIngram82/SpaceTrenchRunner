@@ -134,7 +134,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4928932786750040, guid: 62ac4c7c08448e94294354e3c1d55d04, type: 2}
       propertyPath: m_LocalRotation.x
-      value: 0
+      value: 0.043619405
       objectReference: {fileID: 0}
     - target: {fileID: 4928932786750040, guid: 62ac4c7c08448e94294354e3c1d55d04, type: 2}
       propertyPath: m_LocalRotation.y
@@ -146,18 +146,12 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4928932786750040, guid: 62ac4c7c08448e94294354e3c1d55d04, type: 2}
       propertyPath: m_LocalRotation.w
-      value: 1
+      value: 0.9990483
       objectReference: {fileID: 0}
     - target: {fileID: 4928932786750040, guid: 62ac4c7c08448e94294354e3c1d55d04, type: 2}
       propertyPath: m_RootOrder
       value: 1
       objectReference: {fileID: 0}
-    - target: {fileID: 114564276581717294, guid: 62ac4c7c08448e94294354e3c1d55d04,
-        type: 2}
-      propertyPath: projectilePrefab
-      value: 
-      objectReference: {fileID: 1901737147318274, guid: cf3b44c543724dc46afee2ceb63e65f5,
-        type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 62ac4c7c08448e94294354e3c1d55d04, type: 2}
   m_IsPrefabAsset: 0

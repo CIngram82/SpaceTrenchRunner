@@ -135,8 +135,8 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1773527028723168}
   m_LocalRotation: {x: -0, y: 1, z: -0, w: 0}
-  m_LocalPosition: {x: 0, y: -0.1, z: -0.75}
-  m_LocalScale: {x: 0.57864267, y: 0.35, z: 3.5845726}
+  m_LocalPosition: {x: 0, y: -0.1, z: -0.45}
+  m_LocalScale: {x: 0.57864267, y: 0.35, z: 2.5}
   m_Children: []
   m_Father: {fileID: 4928932786750040}
   m_RootOrder: 5
@@ -199,7 +199,7 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1103734664725006}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: 0.043619405, y: 0, z: 0, w: 0.9990483}
   m_LocalPosition: {x: 0, y: 0, z: -2.5}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -211,7 +211,7 @@ Transform:
   - {fileID: 4353261419289200}
   m_Father: {fileID: 0}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 5, y: 0, z: 0}
 --- !u!4 &4945156400159954
 Transform:
   m_ObjectHideFlags: 1
@@ -457,7 +457,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f19e1f0250f0ea440a677770674c1a80, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  projectilePrefab: {fileID: 1904370469316196, guid: b46c6ba83994e0a4490d698bd3feed86,
+  projectilePrefab: {fileID: 1901737147318274, guid: cf3b44c543724dc46afee2ceb63e65f5,
     type: 2}
   firePoint01: {fileID: 4408449873099958}
   firePoint02: {fileID: 4536201243409170}
@@ -478,7 +478,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   fowardSpeed: 5
-  speed: 200
+  speed: 5
   minSpeed: 15
   currentSpeed: 0
   isBoosting: 0
