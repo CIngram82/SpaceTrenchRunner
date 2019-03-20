@@ -113,6 +113,54 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!1001 &701126345
+Prefab:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 4928932786750040, guid: 62ac4c7c08448e94294354e3c1d55d04, type: 2}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4928932786750040, guid: 62ac4c7c08448e94294354e3c1d55d04, type: 2}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4928932786750040, guid: 62ac4c7c08448e94294354e3c1d55d04, type: 2}
+      propertyPath: m_LocalPosition.z
+      value: -2.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 4928932786750040, guid: 62ac4c7c08448e94294354e3c1d55d04, type: 2}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4928932786750040, guid: 62ac4c7c08448e94294354e3c1d55d04, type: 2}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4928932786750040, guid: 62ac4c7c08448e94294354e3c1d55d04, type: 2}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4928932786750040, guid: 62ac4c7c08448e94294354e3c1d55d04, type: 2}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4928932786750040, guid: 62ac4c7c08448e94294354e3c1d55d04, type: 2}
+      propertyPath: m_RootOrder
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114564276581717294, guid: 62ac4c7c08448e94294354e3c1d55d04,
+        type: 2}
+      propertyPath: projectilePrefab
+      value: 
+      objectReference: {fileID: 1901737147318274, guid: cf3b44c543724dc46afee2ceb63e65f5,
+        type: 2}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 62ac4c7c08448e94294354e3c1d55d04, type: 2}
+  m_IsPrefabAsset: 0
 --- !u!1001 &1077399539
 Prefab:
   m_ObjectHideFlags: 0

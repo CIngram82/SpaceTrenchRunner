@@ -46,6 +46,7 @@ public class AudioManager : MonoBehaviour {
     }
     public void PlayAttackSFX()
     {
+
         audioSource.PlayOneShot(playerAttackSFX[0]);
         
     }

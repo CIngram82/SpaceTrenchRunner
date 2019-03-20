@@ -482,11 +482,11 @@ MonoBehaviour:
   minSpeed: 15
   currentSpeed: 0
   isBoosting: 0
-  boostingTime: 2.4
   boostTimeLeft: 0
+  boostingTime: 2.4
   isBreaking: 0
-  breakingTime: 1
   breakingTimeLeft: 0
+  breakingTime: 1
   breakingCost: 50
   breakingDamage: 5
   wallHitDamage: 5

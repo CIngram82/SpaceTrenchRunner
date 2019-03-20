@@ -27,15 +27,18 @@ public class Obsticle : MonoBehaviour {
             Destroy(gameObject.GetComponent<MeshCollider>());
             rend.material.shader = burnAway;
             Destroy(other.gameObject);
-            //Destroy(gameObject, .5f);
+            Destroy(gameObject, 1f);
             destroyed = true;
 
         }
-        if (other.gameObject.CompareTag("Player"))
+        
+    }
+
+    private void OnCollisionEnter(Collision collision)
+    {
+        if (collision.gameObject.CompareTag("Player"))
         {
             Destroy(gameObject);
         }
     }
-
-
 }

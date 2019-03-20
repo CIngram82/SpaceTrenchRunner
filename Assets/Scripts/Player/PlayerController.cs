@@ -8,15 +8,16 @@ public class PlayerController : MonoBehaviour {
     public float minSpeed = 15.0f;
 
     // boosting
-    public float currentSpeed;
-
-    public bool isBoosting = false;
+    [HideInInspector]   public float currentSpeed;
+    [HideInInspector]   public bool isBoosting = false;
+    [HideInInspector]   public float boostTimeLeft;
     public float boostingTime = 2.4f; //time in seconds
-    public float boostTimeLeft;
+
+
     //breaking
-    public bool isBreaking = false;
+    [HideInInspector]   public bool isBreaking = false;
+    [HideInInspector]   public float breakingTimeLeft;
     public float breakingTime = 1.0f; //time in seconds
-    public float breakingTimeLeft;
     public float breakingCost = 50.0f;
     public float breakingDamage = 5.0f;
 
@@ -36,8 +37,7 @@ public class PlayerController : MonoBehaviour {
     private WeaponSystem wSystem;
     private UIController uiControl;
     private SceneController scnControl;
-
-    public AudioManager audioMan;
+    private AudioManager audioMan;
 
     // Use this for initialization
     void Start () {
@@ -102,6 +102,8 @@ public class PlayerController : MonoBehaviour {
         if (isBreaking) ApplyBreak();
         if (currentSpeed < minSpeed) currentSpeed = minSpeed;
         playerRB.velocity = transform.forward * (currentSpeed);
+
+
 
         Vector3 movement = transform.forward;
         movement.x = horizontalMove * speed;
