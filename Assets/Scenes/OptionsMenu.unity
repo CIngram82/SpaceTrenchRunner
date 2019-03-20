@@ -113,54 +113,6 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
---- !u!1001 &187413511
-Prefab:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    m_TransformParent: {fileID: 0}
-    m_Modifications:
-    - target: {fileID: 4115696960200762, guid: 7203547628887a24cbf3914d6a8b6575, type: 2}
-      propertyPath: m_LocalPosition.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4115696960200762, guid: 7203547628887a24cbf3914d6a8b6575, type: 2}
-      propertyPath: m_LocalPosition.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4115696960200762, guid: 7203547628887a24cbf3914d6a8b6575, type: 2}
-      propertyPath: m_LocalPosition.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4115696960200762, guid: 7203547628887a24cbf3914d6a8b6575, type: 2}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4115696960200762, guid: 7203547628887a24cbf3914d6a8b6575, type: 2}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4115696960200762, guid: 7203547628887a24cbf3914d6a8b6575, type: 2}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4115696960200762, guid: 7203547628887a24cbf3914d6a8b6575, type: 2}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4115696960200762, guid: 7203547628887a24cbf3914d6a8b6575, type: 2}
-      propertyPath: m_RootOrder
-      value: 4
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: 7203547628887a24cbf3914d6a8b6575, type: 2}
-  m_IsPrefabAsset: 0
---- !u!114 &187413512 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 114084762941835090, guid: 7203547628887a24cbf3914d6a8b6575,
-    type: 2}
-  m_PrefabInternal: {fileID: 187413511}
-  m_Script: {fileID: 11500000, guid: f793c2c770a787c478415c4d50b2cd94, type: 3}
 --- !u!1 &983205337
 GameObject:
   m_ObjectHideFlags: 0
@@ -365,7 +317,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 187413512}
+      - m_Target: {fileID: 114084762941835090, guid: 7203547628887a24cbf3914d6a8b6575,
+          type: 2}
         m_MethodName: LoadSceneByName
         m_Mode: 5
         m_Arguments:
