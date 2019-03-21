@@ -3,22 +3,27 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class AudioManager : MonoBehaviour {
+    [Header("Trainer VO messages")]
     public AudioClip trainingVO;
     public AudioClip boostReminderVO;
     public AudioClip breakReminderVO;
     public bool hasBreaked = false;
     public bool hasBoosted = false;
     
+    [Header("Ship VO messages")]
     public AudioClip lowPowerBreakingDamageVO;
+    private float breakingDamageVOTime = 0;
     public AudioClip collisionVO;
+    private float collisionVOTime = 0;
     public AudioClip lowPowerAttackVO;
+    private float lowPowerVOTime = 0;
     public AudioClip boosingAttackVO;
+    private float boostingVOTime = 0;
 
+    [Header("Other sounds")]
     public List<AudioClip> playerAttackSFX = new List<AudioClip>();
-
     AudioSource audioSource;
-
-    // Use this for initialization
+    
     void Start()
     {
         audioSource = GetComponent<AudioSource>();
@@ -52,21 +57,34 @@ public class AudioManager : MonoBehaviour {
     }
     public void PlaylowPowerBreakingDamageVO()
     {
-        audioSource.PlayOneShot(lowPowerBreakingDamageVO);
+        if (Time.time > breakingDamageVOTime)
+        {
+            breakingDamageVOTime = lowPowerBreakingDamageVO.length * 1.5f;
+            audioSource.PlayOneShot(lowPowerBreakingDamageVO);
+        }
     }
     public void PlaycollisionVO()
     {
-        audioSource.PlayOneShot(collisionVO);
-       
+        if (Time.time > collisionVOTime)
+        {
+            collisionVOTime = Time.time + collisionVO.length * 1.5f;
+            audioSource.PlayOneShot(collisionVO);
+        }
     }
     public void PlaylowPowerAttackVO()
     {
-        
-        audioSource.PlayOneShot(lowPowerAttackVO);
+        if (Time.time > lowPowerVOTime)
+        {
+            lowPowerVOTime = Time.time + lowPowerAttackVO.length * 1.5f;
+            audioSource.PlayOneShot(lowPowerAttackVO);
+        }
     }
     public void PlayboosingAttackVO()
     {
-        audioSource.PlayOneShot(boosingAttackVO);
-        
+        if (Time.time > boostingVOTime)
+        {
+            boostingVOTime = Time.time + boosingAttackVO.length * 1.5f;
+            audioSource.PlayOneShot(boosingAttackVO);
+        }
     }
 }
