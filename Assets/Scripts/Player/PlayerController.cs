@@ -27,27 +27,27 @@ public class PlayerController : MonoBehaviour {
     [Header(" Collision system")]
     public float wallHitDamage = 5.0f;
     public float obsHitDamage = 2.5f;
-
+    public ParticleSystem wallhit;
 
     // health
     public float maxHealth = 100;
     private float health;
 
+    [Header("Camera FOV system")]
+    private Camera myCamera;
+    public float normalFOV = 60;
+    public float boostFOV = 65;
+    public float breakFOV = 55;
+    public float fOVChangeRate = 0.075f;
+
     private Rigidbody  playerRB;
     private float horizontalMove;
     private float verticalMove;
-    public ParticleSystem wallhit;
     private WeaponSystem wSystem;
     private UIController uiControl;
     private SceneController scnControl;
     private AudioManager audioMan;
 
-    private Camera myCamera;
-    private float normalFOV = 60;
-    private float boostFOV = 65;
-    private float breakFOV = 55;
-    private float fOVChangeRate = 0.075f;
-    // Use this for initialization
     void Start () {
         audioMan = FindObjectOfType<AudioManager>();
         playerRB = GetComponent<Rigidbody>();
@@ -102,6 +102,7 @@ public class PlayerController : MonoBehaviour {
                 wSystem.currentAmmo -= breakingCost;
             }
         }
+        // FOV returns to normal 
         if (!isBoosting && !isBreaking && (myCamera.fieldOfView != 60))
         {
             myCamera.fieldOfView = Mathf.Lerp(myCamera.fieldOfView, normalFOV, fOVChangeRate);
@@ -157,6 +158,7 @@ public class PlayerController : MonoBehaviour {
             boostingSpeed = 0.0f;
             isBoosting = false;
         }
+        // FOV change
         myCamera.fieldOfView = Mathf.Lerp(myCamera.fieldOfView, boostFOV, fOVChangeRate);
     }
     private void ApplyBreak()
@@ -170,6 +172,7 @@ public class PlayerController : MonoBehaviour {
             breakingSpeed = 0.0f;
             isBreaking = false;
         }
+        // FOV change
         myCamera.fieldOfView = Mathf.Lerp(myCamera.fieldOfView, breakFOV, fOVChangeRate);
 
     }
