@@ -42,6 +42,11 @@ public class PlayerController : MonoBehaviour {
     private SceneController scnControl;
     private AudioManager audioMan;
 
+    private Camera myCamera;
+    private float normalFOV = 60;
+    private float boostFOV = 65;
+    private float breakFOV = 55;
+    private float fOVChangeRate = 0.075f;
     // Use this for initialization
     void Start () {
         audioMan = FindObjectOfType<AudioManager>();
@@ -50,7 +55,8 @@ public class PlayerController : MonoBehaviour {
 
         scnControl = FindObjectOfType<SceneController>();
         uiControl = FindObjectOfType<UIController>();
-        
+        myCamera = FindObjectOfType<Camera>();
+
         boostTimeLeft = boostingTime;
         breakingTimeLeft = breakingTime;
         currentSpeed = fowardSpeed;
@@ -58,8 +64,6 @@ public class PlayerController : MonoBehaviour {
 
         Cursor.lockState = CursorLockMode.Locked;
     }
-	
-	// Update is called once per frame
 	void Update () {
         horizontalMove = Input.GetAxis("Horizontal");
         verticalMove = Input.GetAxis("Vertical");
@@ -98,8 +102,11 @@ public class PlayerController : MonoBehaviour {
                 wSystem.currentAmmo -= breakingCost;
             }
         }
+        if (!isBoosting && !isBreaking && (myCamera.fieldOfView != 60))
+        {
+            myCamera.fieldOfView = Mathf.Lerp(myCamera.fieldOfView, normalFOV, fOVChangeRate);
+        }
 	}
-
     private void FixedUpdate()
     {
         if (isBoosting) AddToBoost();
@@ -114,7 +121,6 @@ public class PlayerController : MonoBehaviour {
         movement.y = verticalMove * speed;
         playerRB.AddForce( movement);
     }
-
     private void OnCollisionEnter(Collision collision)
     {
         if (collision.gameObject.CompareTag("wall"))
@@ -151,6 +157,7 @@ public class PlayerController : MonoBehaviour {
             boostingSpeed = 0.0f;
             isBoosting = false;
         }
+        myCamera.fieldOfView = Mathf.Lerp(myCamera.fieldOfView, boostFOV, fOVChangeRate);
     }
     private void ApplyBreak()
     {
@@ -163,9 +170,9 @@ public class PlayerController : MonoBehaviour {
             breakingSpeed = 0.0f;
             isBreaking = false;
         }
+        myCamera.fieldOfView = Mathf.Lerp(myCamera.fieldOfView, breakFOV, fOVChangeRate);
 
     }
-
     private void TakeDamage(float damage)
     {
         health -= damage;
