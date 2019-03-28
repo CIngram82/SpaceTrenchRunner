@@ -119,7 +119,7 @@ public class PlayerController : MonoBehaviour {
             Vector3 dir = collisionPoint - transform.position;
             dir = -dir.normalized;
             TakeDamage(wallHitDamage);
-            playerRB.AddForce(dir * (speed * 5));
+            playerRB.AddForce(dir * (speed * 10));
             Instantiate(wallhit, collisionPoint, Quaternion.Euler(dir),collision.gameObject.transform);
             audioMan.PlaycollisionVO();
         }else if (collision.gameObject.CompareTag("Obstacle"))
