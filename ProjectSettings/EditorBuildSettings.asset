@@ -12,15 +12,9 @@ EditorBuildSettings:
     path: Assets/Scenes/MainMenu.unity
     guid: 441f59f49262ef44987550847dcc1117
   - enabled: 1
-    path: Assets/Scenes/OptionsMenu.unity
-    guid: 5852ee7604e22644bb6c8879e4bf9c63
-  - enabled: 1
     path: Assets/Scenes/Credits.unity
     guid: 05cc55e4e1ac08343b803dbb91ae953d
   - enabled: 1
     path: Assets/Scenes/TrenchRun.unity
     guid: 99c9720ab356a0642a771bea13969a05
-  - enabled: 1
-    path: Assets/Scenes/GameOver.unity
-    guid: 54865dec6b5d32b4ebdd9d76da2951e3
   m_configObjects: {}
