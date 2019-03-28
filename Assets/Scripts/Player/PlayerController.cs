@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class PlayerController : MonoBehaviour {
-    public float fowardSpeed;
+    public float forwardSpeed;
     public float speed;
     public float minSpeed = 15.0f;
 
@@ -50,7 +50,7 @@ public class PlayerController : MonoBehaviour {
         
         boostTimeLeft = boostingTime;
         breakingTimeLeft = breakingTime;
-        currentSpeed = fowardSpeed;
+        currentSpeed = forwardSpeed;
         health = maxHealth;
 
     }
@@ -104,7 +104,7 @@ public class PlayerController : MonoBehaviour {
         playerRB.velocity = transform.forward * (currentSpeed);
 
 
-
+        speed = currentSpeed * 0.5f;
         Vector3 rot = transform.rotation.eulerAngles;
         rot.x = -verticalMove  * speed;
         rot.y = horizontalMove * speed;
