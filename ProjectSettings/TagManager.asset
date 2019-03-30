@@ -7,6 +7,7 @@ TagManager:
   - wall
   - Obstacle
   - Projectile
+  - howtoplay
   layers:
   - Default
   - TransparentFX

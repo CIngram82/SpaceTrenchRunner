@@ -218,6 +218,16 @@ Prefab:
       propertyPath: m_RootOrder
       value: 4
       objectReference: {fileID: 0}
+    - target: {fileID: 114158019157406538, guid: e2042e843d39b3c42b1b55f99f7e5cb7,
+        type: 2}
+      propertyPath: menuBGM
+      value: 
+      objectReference: {fileID: 8300000, guid: 285efea18568a2b45bc577b54dbe08a7, type: 3}
+    - target: {fileID: 114158019157406538, guid: e2042e843d39b3c42b1b55f99f7e5cb7,
+        type: 2}
+      propertyPath: gameBGM
+      value: 
+      objectReference: {fileID: 8300000, guid: 150160f9f1161584fb842fad140fb172, type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e2042e843d39b3c42b1b55f99f7e5cb7, type: 2}
   m_IsPrefabAsset: 0

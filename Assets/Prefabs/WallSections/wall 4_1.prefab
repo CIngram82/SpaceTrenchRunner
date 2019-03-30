@@ -24,7 +24,7 @@ GameObject:
   - component: {fileID: 64475210383423854}
   m_Layer: 0
   m_Name: Panel4
-  m_TagString: Untagged
+  m_TagString: wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -40,7 +40,7 @@ GameObject:
   - component: {fileID: 95299145921807290}
   m_Layer: 0
   m_Name: wall 4_1
-  m_TagString: Untagged
+  m_TagString: wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

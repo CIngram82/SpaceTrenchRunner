@@ -22,7 +22,7 @@ public class PlayerController : MonoBehaviour {
     public float breakingDamage = 5.0f;
 
     // collision 
-    public float wallHitDamage = 5.0f;
+    public float wallHitDamage = 25f;
     public float obsHitDamage = 2.5f;
 
 
@@ -119,7 +119,7 @@ public class PlayerController : MonoBehaviour {
             Vector3 dir = collisionPoint - transform.position;
             dir = -dir.normalized;
             TakeDamage(wallHitDamage);
-            playerRB.AddForce(dir * (speed * 10));
+            playerRB.AddForce(dir * (speed * 5));
             Instantiate(wallhit, collisionPoint, Quaternion.Euler(dir),collision.gameObject.transform);
             audioMan.PlaycollisionVO();
         }else if (collision.gameObject.CompareTag("Obstacle"))
@@ -173,7 +173,7 @@ public class PlayerController : MonoBehaviour {
     }
     private void PlayerDeath()
     {
-        scnControl.LoadSceneByName("GameOver");
+        scnControl.LoadSceneByName("Credits");
         string name = "None";
 
         float distance = transform.position.z;

@@ -43,7 +43,7 @@ public class SceneController : MonoBehaviour {
         }
         SceneManager.LoadScene(name);
     }
-
+   
     public void QuitGame()
     {
         Application.Quit();
