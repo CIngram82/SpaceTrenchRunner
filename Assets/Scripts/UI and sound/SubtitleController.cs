@@ -11,6 +11,8 @@ public class SubtitleController : MonoBehaviour
     public Text subText;
     public Text shipText;
 
+
+    public AudioSource audioSource;
     public MusicManager volControl;
 
 
@@ -18,6 +20,8 @@ public class SubtitleController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        volControl = GameObject.Find("MusicManager").GetComponent<MusicManager>();
+
         subPanel.gameObject.SetActive(false);
         shipPanel.gameObject.SetActive(false);
         
@@ -33,6 +37,11 @@ public class SubtitleController : MonoBehaviour
     void CheckForSub()
     {
         //script to check if/what active audio track.
+    }
+
+    public void SetVolume(float volume)
+    {
+        audioSource.volume = volume;
     }
 
     public void SubtitleByName(string name)

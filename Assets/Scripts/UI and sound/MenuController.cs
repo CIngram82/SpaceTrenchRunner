@@ -7,20 +7,55 @@ public class MenuController : MonoBehaviour
 {
     List<Scores> highscore;
     Scores cScore;
+    public GameObject highScoreHolder;
     public GameObject highScorePrefab;
-    Text missingName;
-    InputField missingTextInput;
-    public InputField mainInputField;
-
+    public GameObject highScorePanel;
+    public GameObject getNamePanel;
+    public InputField nameInputField;
+    public Text getNameScoreText;
+    public Button nameInputButton;
+    public GameObject lowScorePanel;
+    public Text lowScoreText;
     // Use this for initialization
     void Start()
     {
+        HighScoreManager._instance.SaveHighScore("Chris' Mom", 1000000, 9001, 500);
+        HighScoreManager._instance.SaveHighScore("Tiphany", 110517, 1000, 200);
+        getNamePanel.gameObject.SetActive(false);
+        highScorePanel.gameObject.SetActive(false);
+        lowScorePanel.gameObject.SetActive(false);
+        nameInputButton.interactable = false;
         highscore = new List<Scores>();
         highscore = HighScoreManager._instance.GetHighScore();
         Scores cScore = HighScoreManager._instance.GetCurrentScore();
+        print(highscore.Count);
+        if (cScore.score > highscore[highscore.Count -1].score || highscore.Count < 10)
+        {
+            getNamePanel.gameObject.SetActive(true);
+        }
+        else
+        {
+            lowScorePanel.gameObject.SetActive(true);
+        }
+    }
+    private void Update()
+    {
+        if(nameInputField.text != ""){
+            nameInputButton.interactable = true;
+        }
+    }
+    public void OnNameSubmitButtonClick()
+    {
+        cScore.name = nameInputField.text;
+        HighScoreManager._instance.SaveCurrentScore(cScore.name,cScore.score,cScore.distance,cScore.time);
+        getNamePanel.gameObject.SetActive(false);
         LoadList();
     }
-
+    public void ONLowScoreButtonClick()
+    {
+        lowScorePanel.gameObject.SetActive(false);
+        LoadList();
+    }
     void CheckforSH()
     {
         for(int i = 0; i < highscore.Count;i++)
@@ -34,12 +69,15 @@ public class MenuController : MonoBehaviour
     }
     void LoadList()
     {
+        highScorePanel.gameObject.SetActive(true);
         float y = 1.0f;
         foreach (Scores _score in highscore)
         {
-            GameObject hsPanel = Instantiate(highScorePrefab, gameObject.transform);
+            GameObject hsPanel = Instantiate(highScorePrefab,highScoreHolder.transform);
             hsPanel.GetComponent<RectTransform>().anchorMax = new Vector2(1, y);
             hsPanel.GetComponent<RectTransform>().anchorMin = new Vector2(0, y -= 0.1f);
+            hsPanel.GetComponent<RectTransform>().offsetMax = new Vector2(0, 0);
+            hsPanel.GetComponent<RectTransform>().offsetMin = new Vector2(0, 0);
             Text nameText = hsPanel.transform.Find("nameText").GetComponent<Text>();
             nameText.text = _score.name.ToString();
             Text distanceText = hsPanel.transform.Find("distanceText").GetComponent<Text>();

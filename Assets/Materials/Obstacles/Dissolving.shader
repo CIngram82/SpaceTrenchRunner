@@ -9,7 +9,7 @@
  _BurnRamp("Burn Ramp (RGB)", 2D) = "white" {}
 	}
 		SubShader{
-		  Tags { "RenderType" = "Opaque" }
+		  Tags { "RenderPipeline" = "HDRenderPipeline" }
 		  Cull Off
 		  CGPROGRAM
 		//if you're not planning on using shadows, remove "addshadow" for better performance

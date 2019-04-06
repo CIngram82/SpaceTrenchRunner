@@ -19,6 +19,10 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4327034709817606}
+  - component: {fileID: 136880326675791986}
+  - component: {fileID: 136095862299271852}
+  - component: {fileID: 136772496744613498}
+  - component: {fileID: 114205510410796286}
   m_Layer: 0
   m_Name: Obst (8)
   m_TagString: wall
@@ -51,7 +55,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1008503161124680}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: -7.4836617, y: 3.0646136, z: 3.4888997}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4687590390048810}
@@ -127,3 +131,54 @@ MeshCollider:
   m_CookingOptions: 14
   m_SkinWidth: 0.01
   m_Mesh: {fileID: 4300000, guid: 34eff1e4435c66f458d6c6a79a097c5a, type: 3}
+--- !u!114 &114205510410796286
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1008503161124680}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 759bd31f6d0d38c49bca89dad20ec124, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  player: {fileID: 0}
+--- !u!136 &136095862299271852
+CapsuleCollider:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1008503161124680}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  m_Radius: 0.5
+  m_Height: 4.3090954
+  m_Direction: 0
+  m_Center: {x: -2.146247, y: 0.51, z: 0}
+--- !u!136 &136772496744613498
+CapsuleCollider:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1008503161124680}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  m_Radius: 0.90172386
+  m_Height: 1.8034477
+  m_Direction: 1
+  m_Center: {x: -0.7, y: 0.78, z: -0.02}
+--- !u!136 &136880326675791986
+CapsuleCollider:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1008503161124680}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  m_Radius: 0.5
+  m_Height: 5.1929255
+  m_Direction: 1
+  m_Center: {x: -1, y: -1.5759845, z: 0}

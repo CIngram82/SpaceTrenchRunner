@@ -16,7 +16,10 @@ public class MusicManager : MonoBehaviour {
         audioSource.PlayDelayed(0.5f);
     }
 
-  
+    public void SetVol(float volume)
+    {
+        audioSource.volume = volume;
+    }
     public void PlayGameBGM()
     {
         audioSource.Stop();
@@ -24,8 +27,11 @@ public class MusicManager : MonoBehaviour {
         audioSource.loop = true;
         audioSource.PlayDelayed(0.5f);
     }
-    public void SetVol(float vol)
+    public void PlayMenuMusic()
     {
-        audioSource.volume = vol;
+        audioSource.Stop();
+        audioSource.clip = menuBGM;
+        audioSource.loop = true;
+        audioSource.PlayDelayed(0.5f);
     }
 }

@@ -3,9 +3,18 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class PlayerController : MonoBehaviour {
-    public float fowardSpeed;
+    public float forwardSpeed;
     public float speed;
     public float minSpeed = 15.0f;
+
+    private bool playerDead = false;
+
+    [Header("Camera FOV system")]
+    private Camera myCamera;
+    public float normalFOV = 60;
+    public float boostFOV = 65;
+    public float breakFOV = 55;
+    public float fOVChangeRate = 0.075f;
 
     // boosting
     [HideInInspector]   public float currentSpeed;
@@ -22,7 +31,7 @@ public class PlayerController : MonoBehaviour {
     public float breakingDamage = 5.0f;
 
     // collision 
-    public float wallHitDamage = 25f;
+    public float wallHitDamage = 5.0f;
     public float obsHitDamage = 2.5f;
 
 
@@ -41,6 +50,9 @@ public class PlayerController : MonoBehaviour {
 
     // Use this for initialization
     void Start () {
+        Cursor.lockState = CursorLockMode.Locked;
+        Cursor.visible = false;
+
         audioMan = FindObjectOfType<AudioManager>();
         playerRB = GetComponent<Rigidbody>();
         wSystem = GetComponent<WeaponSystem>();
@@ -50,51 +62,74 @@ public class PlayerController : MonoBehaviour {
         
         boostTimeLeft = boostingTime;
         breakingTimeLeft = breakingTime;
-        currentSpeed = fowardSpeed;
+        currentSpeed = forwardSpeed;
         health = maxHealth;
+
+        myCamera = FindObjectOfType<Camera>();
 
     }
 	
 	// Update is called once per frame
 	void Update () {
-        horizontalMove = Input.GetAxis("Horizontal");
-        verticalMove = Input.GetAxis("Vertical");
-        if (Input.GetButtonDown("Fire1") && (wSystem.currentAmmo > wSystem.attackCost))
+
+        if (!playerDead)
         {
-            wSystem.FireWeapon(currentSpeed);
-            audioMan.PlayAttackSFX();
-        }
-        else if (Input.GetButtonDown("Fire1") && (wSystem.currentAmmo < wSystem.attackCost))
-        {
-            audioMan.PlaylowPowerAttackVO();
-        }
-        if (Input.GetButtonDown("Jump") && !isBoosting && !isBreaking)
-        {
-            isBoosting = true;
-            minSpeed += 1;
-            boostTimeLeft = boostingTime;
-            audioMan.hasBoosted = true;
-            audioMan.PlayboosingAttackVO();
-        }
-        if (Input.GetButtonDown("Fire2")&& !isBreaking && !isBoosting)
-        {
-            isBreaking = true;
-            audioMan.hasBreaked = true;
-            breakingTimeLeft = breakingTime;
+            horizontalMove = Input.GetAxis("Horizontal");
+            verticalMove = Input.GetAxis("Vertical");
+            if (Input.GetButtonDown("Fire1") && (wSystem.currentAmmo > wSystem.attackCost))
+            {
+                wSystem.FireWeapon(currentSpeed);
+                audioMan.PlayAttackSFX();
+            }
+            else if (Input.GetButtonDown("Fire1") && (wSystem.currentAmmo < wSystem.attackCost))
+            {
+                audioMan.PlaylowPowerAttackVO();
+            }
+            if (Input.GetButtonDown("Jump") && !isBoosting && !isBreaking)
+            {
+                isBoosting = true;
+                minSpeed += 1;
+                boostTimeLeft = boostingTime;
+                audioMan.hasBoosted = true;
+                audioMan.PlayboosingAttackVO();
+            }
+            if (Input.GetButtonDown("Fire2") && !isBreaking && !isBoosting)
+            {
+                isBreaking = true;
+                audioMan.hasBreaked = true;
+                breakingTimeLeft = breakingTime;
+
+                if (wSystem.currentAmmo < breakingCost)
+                {
+                    TakeDamage((breakingDamage + breakingCost) - wSystem.currentAmmo);
+                    wSystem.currentAmmo = 0.0f;
+                    audioMan.PlaylowPowerBreakingDamageVO();
+                }
+                else
+                {
+                    TakeDamage(breakingDamage);
+                    wSystem.currentAmmo -= breakingCost;
+                }
+            }
+
             
-            if(wSystem.currentAmmo < breakingCost)
+
+
+
+            // FOV returns to normal 
+            if (!isBoosting && !isBreaking && !playerDead && (myCamera.fieldOfView != 60))
             {
-                TakeDamage((breakingDamage + breakingCost) - wSystem.currentAmmo);
-                wSystem.currentAmmo = 0.0f;
-                audioMan.PlaylowPowerBreakingDamageVO();
+                myCamera.fieldOfView = Mathf.Lerp(myCamera.fieldOfView, normalFOV, fOVChangeRate);
             }
-            else
-            {
-                TakeDamage(breakingDamage);
-                wSystem.currentAmmo -= breakingCost;
-            }
+
+            
         }
-	}
+        if (playerDead)
+        {
+            DeathFOV();
+        }
+
+    }
 
     private void FixedUpdate()
     {
@@ -119,7 +154,7 @@ public class PlayerController : MonoBehaviour {
             Vector3 dir = collisionPoint - transform.position;
             dir = -dir.normalized;
             TakeDamage(wallHitDamage);
-            playerRB.AddForce(dir * (speed * 5));
+            playerRB.AddForce(dir * (speed * 10));
             Instantiate(wallhit, collisionPoint, Quaternion.Euler(dir),collision.gameObject.transform);
             audioMan.PlaycollisionVO();
         }else if (collision.gameObject.CompareTag("Obstacle"))
@@ -147,6 +182,9 @@ public class PlayerController : MonoBehaviour {
             boostingSpeed = 0.0f;
             isBoosting = false;
         }
+
+        // FOV change
+        myCamera.fieldOfView = Mathf.Lerp(myCamera.fieldOfView, boostFOV, fOVChangeRate);
     }
     private void ApplyBreak()
     {
@@ -159,7 +197,8 @@ public class PlayerController : MonoBehaviour {
             breakingSpeed = 0.0f;
             isBreaking = false;
         }
-
+        // FOV change
+        myCamera.fieldOfView = Mathf.Lerp(myCamera.fieldOfView, breakFOV, fOVChangeRate);
     }
 
     private void TakeDamage(float damage)
@@ -171,14 +210,46 @@ public class PlayerController : MonoBehaviour {
             PlayerDeath();
         }
     }
+
+
+    //NOT FINISHED
+
     private void PlayerDeath()
     {
-        scnControl.LoadSceneByName("Credits");
-        string name = "None";
+        Cursor.lockState = CursorLockMode.None;
 
-        float distance = transform.position.z;
-        float time = Time.timeSinceLevelLoad;
-        float score = distance * time;
-        HighScoreManager._instance.SaveCurrentScore(name,score,distance,time);
+       
+
+        minSpeed = 0;
+        forwardSpeed = 0;
+        currentSpeed = 0;
+
+        Camera cam = GetComponent<Camera>();
+
+        playerDead = true;
+
+        StartCoroutine(loadCredits());
+       
+
+        //string name = "None";
+
+        //float distance = transform.position.z;
+        //float time = Time.timeSinceLevelLoad;
+        //float score = distance * time;
+        //HighScoreManager._instance.SaveCurrentScore(name,score,distance,time);
+    }
+    IEnumerator loadCredits()
+    {
+
+        yield return new WaitForSeconds(2.5f);
+        Cursor.visible = true;
+        FindObjectOfType<MusicManager>().PlayMenuMusic();
+        scnControl.LoadSceneByName("Credits");
+        
+    }
+
+    public void DeathFOV()
+    {
+        Camera.main.fieldOfView += Time.deltaTime * 40;
     }
 }

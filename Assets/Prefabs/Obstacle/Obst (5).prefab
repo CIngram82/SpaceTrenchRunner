@@ -37,6 +37,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4662439455390952}
+  - component: {fileID: 136599552158721846}
+  - component: {fileID: 136294182974311556}
+  - component: {fileID: 114865833113339990}
   m_Layer: 0
   m_Name: Obst (5)
   m_TagString: wall
@@ -51,7 +54,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1730433667860672}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 29.400848, y: 15.646901, z: 58.863228}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4761184791126656}
@@ -127,3 +130,41 @@ MeshCollider:
   m_CookingOptions: 14
   m_SkinWidth: 0.01
   m_Mesh: {fileID: 4300000, guid: 0b17a0b04b687104e9aacae4bc6dc11a, type: 3}
+--- !u!114 &114865833113339990
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1730433667860672}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 759bd31f6d0d38c49bca89dad20ec124, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  player: {fileID: 0}
+--- !u!136 &136294182974311556
+CapsuleCollider:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1730433667860672}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  m_Radius: 0.5
+  m_Height: 2.0965953
+  m_Direction: 1
+  m_Center: {x: -1.98, y: 0.68347645, z: 0}
+--- !u!136 &136599552158721846
+CapsuleCollider:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1730433667860672}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  m_Radius: 0.6111393
+  m_Height: 5.6572623
+  m_Direction: 1
+  m_Center: {x: -0.9909344, y: -1.4404824, z: 0}
