@@ -218,25 +218,14 @@ public class PlayerController : MonoBehaviour {
     {
         Cursor.lockState = CursorLockMode.None;
 
-       
-
         minSpeed = 0;
         forwardSpeed = 0;
         currentSpeed = 0;
-
-        Camera cam = GetComponent<Camera>();
 
         playerDead = true;
 
         StartCoroutine(loadCredits());
        
-
-        //string name = "None";
-
-        //float distance = transform.position.z;
-        //float time = Time.timeSinceLevelLoad;
-        //float score = distance * time;
-        //HighScoreManager._instance.SaveCurrentScore(name,score,distance,time);
     }
     IEnumerator loadCredits()
     {
@@ -244,7 +233,7 @@ public class PlayerController : MonoBehaviour {
         yield return new WaitForSeconds(2.5f);
         Cursor.visible = true;
         FindObjectOfType<MusicManager>().PlayMenuMusic();
-        scnControl.LoadSceneByName("Credits");
+        scnControl.LoadSceneByName("GameOver");
         
     }
 
