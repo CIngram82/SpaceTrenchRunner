@@ -52,6 +52,7 @@ public class HighScoreManager : MonoBehaviour
     }
     public void SaveHighScore(string name, float score, float distance, float time)
     {
+        print(score + "Save");
         List<Scores> HighScores = new List<Scores>();
 
         int i = 1;
@@ -78,8 +79,10 @@ public class HighScoreManager : MonoBehaviour
         {
             for (i = 1; i <= HighScores.Count && i <= LeaderboardLength; i++)
             {
+                print(score + "is it higher?");
                 if (score > HighScores[i - 1].score)
                 {
+                    print(score + "it is !");
                     Scores _temp = new Scores();
                     _temp.name = name;
                     _temp.score = score;

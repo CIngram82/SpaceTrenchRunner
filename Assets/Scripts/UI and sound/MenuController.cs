@@ -27,11 +27,6 @@ public class MenuController : MonoBehaviour
         highscore = new List<Scores>();
         highscore = HighScoreManager._instance.GetHighScore();
         cScore = HighScoreManager._instance.GetCurrentScore();
-        print(highscore.Count);
-        print(cScore.name);
-        print(cScore.score);
-        print(cScore.time);
-        print(cScore.distance);
         if (cScore.score > highscore[highscore.Count -1].score || highscore.Count < 10)
         {
             getNamePanel.gameObject.SetActive(true);
@@ -50,7 +45,6 @@ public class MenuController : MonoBehaviour
     public void OnNameSubmitButtonClick()
     {
         cScore.name = nameInputField.text;
-        print(cScore.name);
         HighScoreManager._instance.SaveHighScore(cScore.name,cScore.score,cScore.distance,cScore.time);
         getNamePanel.gameObject.SetActive(false);
         LoadList();
@@ -75,6 +69,7 @@ public class MenuController : MonoBehaviour
     {
         highScorePanel.gameObject.SetActive(true);
         float y = 1.0f;
+        highscore = HighScoreManager._instance.GetHighScore();
         foreach (Scores _score in highscore)
         {
             GameObject hsPanel = Instantiate(highScorePrefab,highScoreHolder.transform);
