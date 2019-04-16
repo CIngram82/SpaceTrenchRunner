@@ -9,7 +9,6 @@ public class SceneController : MonoBehaviour {
     [SerializeField] float timeToWait = 2.5f;
     // Use this for initialization
     void Start () {
-        HighScoreManager._instance.OnResetHS();
         DontDestroyOnLoad(gameObject);
         
         activeSceneBuildInt = SceneManager.GetActiveScene().buildIndex;

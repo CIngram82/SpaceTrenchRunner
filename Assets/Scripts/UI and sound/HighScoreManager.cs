@@ -40,11 +40,15 @@ public class HighScoreManager : MonoBehaviour
             Destroy(gameObject);
 
         DontDestroyOnLoad(gameObject);
-        
     }
 
     public void SaveCurrentScore(string name, float score, float distance, float time)
     {
+        Scores currentScore = new Scores();
+        currentScore.name = name;
+        currentScore.score = score;
+        currentScore.distance = distance;
+        currentScore.time = time;
         PlayerPrefs.SetString("CurrentScore name", name);
         PlayerPrefs.SetFloat("CurrentScore score", score);
         PlayerPrefs.SetFloat("CurrentScore distance", distance);
@@ -52,7 +56,6 @@ public class HighScoreManager : MonoBehaviour
     }
     public void SaveHighScore(string name, float score, float distance, float time)
     {
-        print(score + "Save");
         List<Scores> HighScores = new List<Scores>();
 
         int i = 1;
@@ -79,10 +82,8 @@ public class HighScoreManager : MonoBehaviour
         {
             for (i = 1; i <= HighScores.Count && i <= LeaderboardLength; i++)
             {
-                print(score + "is it higher?");
                 if (score > HighScores[i - 1].score)
                 {
-                    print(score + "it is !");
                     Scores _temp = new Scores();
                     _temp.name = name;
                     _temp.score = score;
@@ -156,20 +157,7 @@ public class HighScoreManager : MonoBehaviour
             PlayerPrefs.DeleteKey("HighScore" + i + "time");
         }
     }
-    public void OnResetHS()
-    {
-        _instance.ClearLeaderBoard();
-        _instance.SaveHighScore("Chris' Mom", 999999, 9999, 999);
-        _instance.SaveHighScore("Tiphany", 110517, 1000, 200);
-        _instance.SaveHighScore("Test 3", 100, 10, 10);
-        _instance.SaveHighScore("Test 4", 90, 90, 9);
-        _instance.SaveHighScore("Test 5", 80, 80, 8);
-        _instance.SaveHighScore("Test 6", 70, 70, 7);
-        _instance.SaveHighScore("Test 7", 60, 60, 6);
-        _instance.SaveHighScore("Test 8", 50, 50, 5);
-        _instance.SaveHighScore("Test 9", 40, 40, 4);
-        _instance.SaveHighScore("Test 10", 30, 30, 3);
-    }
+
     void OnApplicationQuit()
     {
         PlayerPrefs.Save();

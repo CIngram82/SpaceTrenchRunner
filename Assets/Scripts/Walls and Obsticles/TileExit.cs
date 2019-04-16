@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class TileExit : MonoBehaviour {
     private AddWallSection[] allWalls;
-    public Transform holdme;
     public GameObject obst;
     public List<GameObject> obsticlesList = new List<GameObject>();
     public int spawnRate = 10;
@@ -34,7 +33,7 @@ public class TileExit : MonoBehaviour {
                 float spawnpoint = 0.0f;
                 spawnpoint = allWalls[0].zDistance;
                 Vector3 pos = new Vector3(transform.position.x, transform.position.y, spawnpoint);
-                GameObject block = Instantiate(obst, pos, transform.rotation, holdme);
+                GameObject block = Instantiate(obst, pos, transform.rotation);
                 GameObject randomObst = obsticlesList[Random.Range(0, obsticlesList.Count)];
                 Instantiate(randomObst, pos, transform.rotation, block.transform);
                 block.transform.Rotate(0, Random.Range(0, 2) * 180, Random.Range(0,4)*90,Space.Self);
