@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.008872397, g: 0.010915529, b: 0.0098085385, a: 1}
+  m_IndirectSpecularColor: {r: 0.008866555, g: 0.010909035, b: 0.009802442, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -2842,7 +2842,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bb2307e508a1d2b4ebc9ee6b98b80f18, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  zRotation: 5
+  zRotation: 0
+  aWallSec: {fileID: 826064524}
 --- !u!1 &1687889505
 GameObject:
   m_ObjectHideFlags: 0
@@ -3091,7 +3092,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 816bc44024fbb264cab8543d540625dc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  holdme: {fileID: 1685270146}
   obst: {fileID: 1520285378854458, guid: 6d3077f3441ec6c48a7374e0dca9a864, type: 2}
   obsticlesList:
   - {fileID: 1231442100655658, guid: e1cdf6c7727e6044a9653bb22b8958c8, type: 2}
@@ -3103,6 +3103,7 @@ MonoBehaviour:
   - {fileID: 1555968318698784, guid: dbbb517be89362a4799f6ffc56126b52, type: 2}
   - {fileID: 1008503161124680, guid: de86f2ffeebca964aad1ebc0254fa949, type: 2}
   spawnRate: 10
+  holder: {fileID: 1685270146}
   spawnCounter: 0
 --- !u!1 &1857359293
 GameObject:

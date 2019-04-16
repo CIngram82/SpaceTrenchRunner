@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class WallBuilder : MonoBehaviour {
     public List<GameObject> walls = new List<GameObject>();
-    private float zDistance = 0;
+    public float zDistance = 0;
     private GameObject completeWall;
     public GameObject sideA;
     public GameObject sideB;
