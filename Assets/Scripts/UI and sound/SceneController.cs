@@ -9,12 +9,14 @@ public class SceneController : MonoBehaviour {
     [SerializeField] float timeToWait = 2.5f;
     // Use this for initialization
     void Start () {
+        HighScoreManager._instance.OnResetHS();
         DontDestroyOnLoad(gameObject);
         
         activeSceneBuildInt = SceneManager.GetActiveScene().buildIndex;
 
         if (activeSceneBuildInt == 0)
         {
+
             StartCoroutine(WaitForTime());
         }
     }
@@ -37,6 +39,11 @@ public class SceneController : MonoBehaviour {
     public void LoadSceneByName(string name)
     {
         if(name == "TrenchRun")
+        {
+            musicMan = FindObjectOfType<MusicManager>();
+            musicMan.PlayGameBGM();
+        }
+        if (name == "MainMenu")
         {
             musicMan = FindObjectOfType<MusicManager>();
             musicMan.PlayGameBGM();

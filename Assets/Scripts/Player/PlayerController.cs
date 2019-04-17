@@ -6,6 +6,7 @@ public class PlayerController : MonoBehaviour {
     public float forwardSpeed;
     public float speed;
     public float minSpeed = 15.0f;
+    public float maxSpeed = 75.0f;
 
     private bool playerDead = false;
 
@@ -31,8 +32,8 @@ public class PlayerController : MonoBehaviour {
     public float breakingDamage = 5.0f;
 
     // collision 
-    public float wallHitDamage = 5.0f;
-    public float obsHitDamage = 2.5f;
+    public float wallHitDamage = 25.0f;
+    public float obsHitDamage = 12.5f;
 
 
     // health
@@ -136,6 +137,7 @@ public class PlayerController : MonoBehaviour {
         if (isBoosting) AddToBoost();
         if (isBreaking) ApplyBreak();
         if (currentSpeed < minSpeed) currentSpeed = minSpeed;
+        if (currentSpeed > maxSpeed) currentSpeed = maxSpeed;
         playerRB.velocity = transform.forward * (currentSpeed);
 
 
@@ -211,8 +213,7 @@ public class PlayerController : MonoBehaviour {
         }
     }
 
-
-    //NOT FINISHED
+    
 
     private void PlayerDeath()
     {
@@ -228,23 +229,21 @@ public class PlayerController : MonoBehaviour {
 
         playerDead = true;
 
+        string name = "None";
+        float distance = transform.position.z;
+        float time = Time.timeSinceLevelLoad;
+        float score = distance * time;
+        HighScoreManager._instance.SaveCurrentScore(name,score,distance,time);
+        FindObjectOfType<MusicManager>().PlayGameOverVO();
         StartCoroutine(loadCredits());
-       
-
-        //string name = "None";
-
-        //float distance = transform.position.z;
-        //float time = Time.timeSinceLevelLoad;
-        //float score = distance * time;
-        //HighScoreManager._instance.SaveCurrentScore(name,score,distance,time);
     }
     IEnumerator loadCredits()
     {
 
-        yield return new WaitForSeconds(2.5f);
+        yield return new WaitForSeconds(3.75f);
         Cursor.visible = true;
-        FindObjectOfType<MusicManager>().PlayMenuMusic();
-        scnControl.LoadSceneByName("Credits");
+        FindObjectOfType<MusicManager>().PlayGameOverMusic();
+        scnControl.LoadSceneByName("GameOver");
         
     }
 
