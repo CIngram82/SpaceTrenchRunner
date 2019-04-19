@@ -43,10 +43,8 @@ public class MenuController : MonoBehaviour
     }
     public void OnNameSubmitButtonClick()
     {
-        Debug.Log(nameInputField.text);
-        Debug.Log(cScore.score);
         cScore.name = nameInputField.text;
-        HighScoreManager._instance.SaveCurrentScore(cScore.name,cScore.score,cScore.distance,cScore.time);
+        HighScoreManager._instance.SaveHighScore(cScore.name,cScore.score,cScore.distance,cScore.time);
         getNamePanel.gameObject.SetActive(false);
         LoadList();
     }
@@ -70,6 +68,7 @@ public class MenuController : MonoBehaviour
     {
         highScorePanel.gameObject.SetActive(true);
         float y = 1.0f;
+        highscore = HighScoreManager._instance.GetHighScore();
         foreach (Scores _score in highscore)
         {
             GameObject hsPanel = Instantiate(highScorePrefab,highScoreHolder.transform);

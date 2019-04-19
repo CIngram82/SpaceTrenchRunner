@@ -165,7 +165,7 @@ public class HighScoreManager : MonoBehaviour
         _instance.SaveHighScore("JJ Binks", 100, 100, 10);
         _instance.SaveHighScore("IDKFA", 90, 90, 9);
         _instance.SaveHighScore("Power overwhelming", 80, 80, 8);
-        _instance.SaveHighScore("UUDDLRLRBA Sart", 70, 70, 7);
+        _instance.SaveHighScore("UUDDLRLRBA Start", 70, 70, 7);
         _instance.SaveHighScore("Test 7", 60, 60, 6);
         _instance.SaveHighScore("Test 8", 50, 50, 5);
         _instance.SaveHighScore("Test 9", 40, 40, 4);
