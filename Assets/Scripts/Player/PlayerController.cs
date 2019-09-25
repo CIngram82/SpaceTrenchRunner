@@ -35,7 +35,6 @@ public class PlayerController : MonoBehaviour {
     public float wallHitDamage = 25.0f;
     public float obsHitDamage = 12.5f;
 
-
     // health
     public float maxHealth = 100;
     private float health;
@@ -112,24 +111,16 @@ public class PlayerController : MonoBehaviour {
                     wSystem.currentAmmo -= breakingCost;
                 }
             }
-
-            
-
-
-
             // FOV returns to normal 
             if (!isBoosting && !isBreaking && !playerDead && (myCamera.fieldOfView != 60))
             {
                 myCamera.fieldOfView = Mathf.Lerp(myCamera.fieldOfView, normalFOV, fOVChangeRate);
-            }
-
-            
+            }   
         }
         if (playerDead)
         {
             DeathFOV();
         }
-
     }
 
     private void FixedUpdate()
@@ -139,8 +130,6 @@ public class PlayerController : MonoBehaviour {
         if (currentSpeed < minSpeed) currentSpeed = minSpeed;
         if (currentSpeed > maxSpeed) currentSpeed = maxSpeed;
         playerRB.velocity = transform.forward * (currentSpeed);
-
-
 
         Vector3 movement = transform.forward;
         movement.x = horizontalMove * speed;
@@ -184,7 +173,6 @@ public class PlayerController : MonoBehaviour {
             boostingSpeed = 0.0f;
             isBoosting = false;
         }
-
         // FOV change
         myCamera.fieldOfView = Mathf.Lerp(myCamera.fieldOfView, boostFOV, fOVChangeRate);
     }
@@ -212,20 +200,13 @@ public class PlayerController : MonoBehaviour {
             PlayerDeath();
         }
     }
-
-    
-
     private void PlayerDeath()
     {
         Cursor.lockState = CursorLockMode.None;
 
-       
-
         minSpeed = 0;
         forwardSpeed = 0;
         currentSpeed = 0;
-
-        Camera cam = GetComponent<Camera>();
 
         playerDead = true;
 
@@ -239,12 +220,10 @@ public class PlayerController : MonoBehaviour {
     }
     IEnumerator loadCredits()
     {
-
         yield return new WaitForSeconds(3.75f);
         Cursor.visible = true;
         FindObjectOfType<MusicManager>().PlayGameOverMusic();
-        scnControl.LoadSceneByName("GameOver");
-        
+        scnControl.LoadSceneByName("GameOver");   
     }
 
     public void DeathFOV()
